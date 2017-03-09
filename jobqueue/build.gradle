@@ -8,7 +8,7 @@ if (releaseFile.exists()) {
     releaseConfig.load(new FileInputStream(releaseFile))
 }
 // for jitpack
-group='com.github.yigit'
+group='com.github.hussam789'
 ext.releaseConfig = releaseConfig
 
 task wrapper(type: Wrapper) {
@@ -24,6 +24,7 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 
     dependencies {
