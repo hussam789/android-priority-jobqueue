@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
+import android.util.Log;
 
 import com.birbit.android.jobqueue.Params;
 import com.birbit.android.jobqueue.log.JqLog;
@@ -118,6 +119,8 @@ class FrameworkScheduler extends Scheduler {
         if (constraint.getOverrideDeadlineInMs() != null) {
             builder.setOverrideDeadline(constraint.getOverrideDeadlineInMs());
         }
+        JqLog.d("!!! JQ All Pending Jobs %d", jobScheduler.getAllPendingJobs().size());
+        Log.d("JQ", "!!! JQ All Pending Jobs " + jobScheduler.getAllPendingJobs().size());
         int scheduled = jobScheduler.schedule(builder.build());
         JqLog.d("[FW Scheduler] scheduled a framework job. Success? %s id: %d" +
                 " created id: %d", scheduled > 0, scheduled, id);
